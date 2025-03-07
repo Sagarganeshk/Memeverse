@@ -1,52 +1,38 @@
-# 🎨 MemeVerse
-MemeVerse is a feature-rich, multi-page platform designed for meme enthusiasts to explore, create, and share memes effortlessly. With a sleek UI and robust functionality, it's the perfect hub for meme lovers.
+MemeVerse 🎭
+MemeVerse is a multi-page, highly interactive meme platform where users can explore, create, and upload memes effortlessly.
 
-## 🌟 Key Features
-- **Discover Memes**: Browse the latest and trending memes powered by the Imgflip API.
-- **Create Memes**: Personalize images with custom text and overlays.
-- **Optimized Performance**: Utilizes `next/image` for blazing-fast image rendering.
-- **State Handling**: Seamlessly managed via Redux Toolkit.
-- **Theme Toggle**: Easily switch between dark and light modes.
-- **Cloud Storage**: Upload and manage memes securely with Cloudinary.
-- **Enhanced Speed**: Features like lazy loading, code splitting, and caching boost performance.
+🚀 Features
+Meme Exploration: Browse trending memes from the Imgflip API.
+Meme Creation: Add custom text to uploaded images.
+Image Optimization: Uses next/image for faster loading.
+State Management: Powered by Redux Toolkit.
+Dark Mode Support: Seamless light/dark mode switching.
+Cloud Upload: Upload memes to Cloudinary.
+Performance Enhancements: Lazy loading, code splitting, and caching.
 
-## 🛠️ Tech Stack
-- **Frontend**: Next.js (App Router), Tailwind CSS, Framer Motion
-- **State Management**: Redux Toolkit
-- **Image Hosting**: Cloudinary
-- **Meme API**: Imgflip API (for fetching memes)
-- **Deployment**: Vercel
+🛠️ Tech Stack
+Frontend: Next.js (App Router), Tailwind CSS, Framer Motion
+State Management: Redux Toolkit
+Image Upload: Cloudinary
+Backend API: Imgflip API (for meme fetching)
+Deployment: Vercel
 
-## 🚀 Getting Started
+🏗️ Setup & Installation
 
-1️⃣ **Clone the Repository**
-```sh
-git clone https://github.com/Sagarganeshk/Memeverse.git
+Clone the repository
+git clone https://github.com/KirtiLohchab/memeverse.git
 cd MemeVerse
-```
 
-2️⃣ **Install Dependencies**
-```sh
+Install dependencies
 npm install
-```
 
-3️⃣ **Set Up Environment Variables**  
-Create a `.env.local` file and add the following:
-```env
+Set up environment variables
 NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=your_preset
 NEXT_PUBLIC_CLOUDINARY_API_BASE=https://api.cloudinary.com/v1_1/your_cloud_name/image/upload
-```
 
-4️⃣ **Start the Development Server**
-```sh
+Run the development server
 npm run dev
-```
 
-5️⃣ **Build & Deploy to Vercel**
-```sh
+Deploy on Vercel
 npm run build
 vercel deploy
-```
-
-🎉 **Dive into MemeVerse and unleash your creativity!**
-

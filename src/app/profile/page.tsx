@@ -68,10 +68,14 @@ const UserProfile: React.FC = () => {
         className="bg-white dark:bg-gray-900 p-8 shadow-lg rounded-xl max-w-lg mx-auto relative text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
         {/* Avatar */}
-        <div className="relative w-24 h-24 mx-auto">
+        <motion.div
+          className="relative w-24 h-24 mx-auto"
+          whileHover={{ scale: 1.15, boxShadow: "0px 4px 10px rgba(0,0,0,0.15)" }}
+          transition={{ type: "spring", stiffness: 260, damping: 10 }}
+        >
           <Image
             src={avatarPreview}
             alt="Avatar"
@@ -79,32 +83,39 @@ const UserProfile: React.FC = () => {
             height={100}
             className="rounded-full border-4 border-gray-300 dark:border-gray-700 object-cover"
           />
-          <div className="absolute -bottom-2 right-2">
+          <motion.div
+            className="absolute -bottom-2 right-2"
+            whileTap={{ scale: 0.9 }}
+            whileHover={{ filter: "brightness(1.2)", rotate: 5 }}
+          >
             <AvatarUpload onUpload={handleAvatarUpload} />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Form Fields */}
         <div className="mt-6 space-y-4">
-          <input
+          <motion.input
             type="text"
             placeholder="Enter your name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="w-full px-4 py-2 border rounded-lg bg-gray-100 dark:bg-gray-800 dark:border-gray-600 text-black dark:text-white text-center"
+            whileFocus={{ scale: 1.05, borderColor: "#3b82f6" }}
           />
 
-          <textarea
+          <motion.textarea
             placeholder="Write a short bio..."
             value={bio}
             onChange={(e) => setBio(e.target.value)}
             className="w-full px-4 py-2 border rounded-lg bg-gray-100 dark:bg-gray-800 dark:border-gray-600 text-black dark:text-white resize-none text-center"
             rows={3}
+            whileFocus={{ scale: 1.05 }}
           />
 
           <motion.button
             onClick={handleSaveProfile}
             whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95, backgroundColor: "#2563eb" }}
             className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
           >
             Save Profile
@@ -122,6 +133,7 @@ const UserProfile: React.FC = () => {
                 : "bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
             }`}
             whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95, y: 2 }}
             onClick={() => setShowUploaded(true)}
           >
             Uploaded Memes
@@ -133,6 +145,7 @@ const UserProfile: React.FC = () => {
                 : "bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
             }`}
             whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95, y: 2 }}
             onClick={() => setShowUploaded(false)}
           >
             Liked Memes
@@ -140,7 +153,18 @@ const UserProfile: React.FC = () => {
         </div>
 
         {/* Meme Grid */}
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <motion.div
+          className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.2 },
+            },
+          }}
+        >
           {uploadedMemes.slice(0, memesToShow).map((meme) => (
             <motion.div
               key={meme.id}
@@ -152,18 +176,11 @@ const UserProfile: React.FC = () => {
               <MemeCard meme={meme} />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Infinite Scroll */}
         <InfiniteScroll loadMore={loadMoreMemes} isLoading={loading} />
       </div>
-
-      {/* Footer */}
-      <footer className="text-center mt-12 text-sm text-gray-500 dark:text-gray-400">
-        <p>
-          Built by <span className="font-semibold text-blue-600">Sagar Ganesh</span> 🚀
-        </p>
-      </footer>
     </div>
   );
 };
