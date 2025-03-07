@@ -20,7 +20,7 @@ Deployment: Vercel
 🏗️ Setup & Installation
 
 Clone the repository
-git clone https:
+git clone https:https://github.com/Sagarganeshk/Memeverse.git
 cd MemeVerse
 
 Install dependencies
